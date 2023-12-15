@@ -43,8 +43,8 @@ class ModelUtils():
         progress_bar.update(10)
 
         # init data generators for both data types
-        train_data_generator = image.ImageDataGenerator(rescale=1./255, validation_split=0.2)
-        validation_data_generator = image.ImageDataGenerator(rescale=1./255, validation_split=0.2)
+        train_data_generator = image.ImageDataGenerator(rescale=1./255)
+        validation_data_generator = image.ImageDataGenerator(rescale=1./255)
 
         # load training data
         train_generator = train_data_generator.flow_from_directory(
@@ -117,7 +117,7 @@ class ModelUtils():
     def test_model_parameters(model_name, batch_size):
         model = ModelUtils.load_model(model_name)
 
-        data_generator = image.ImageDataGenerator(rescale=1./255, validation_split=0.2)
+        data_generator = image.ImageDataGenerator(rescale=1./255)
         test_generator = data_generator.flow_from_directory(
             VALIDATION_PATH,
             target_size=(64, 64),
